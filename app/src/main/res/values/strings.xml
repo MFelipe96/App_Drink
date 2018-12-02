@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">app_Drinks</string>
+    <string name="app_name">DrinksTab</string>
+    <string name="title_activity_lista">ListaActivity</string>
+    <string name="title_home">Home</string>
+    <string name="titulo_favoritos">Favoritos</string>
+    <string name="titulo_perfil">Perfil</string>
 </resources>
