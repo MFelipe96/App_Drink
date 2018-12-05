@@ -1,13 +1,14 @@
-package com.mfelipe.app_drinks
+package com.mfelipe.app_drinks.cenario_lista
 
 import android.content.Context
-import android.content.Intent
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import com.bumptech.glide.request.RequestOptions
+import com.mfelipe.app_drinks.R
+import com.mfelipe.app_drinks.entidade.Drinks
+import com.mfelipe.app_drinks.uteis.GlideApp
 import kotlinx.android.synthetic.main.drink_item_lista.view.*
 
 class DrinkAdapter(val context: Context, val drinks: List<Drinks>)
@@ -37,8 +38,7 @@ class DrinkAdapter(val context: Context, val drinks: List<Drinks>)
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindView(context: Context, drinks: Drinks, clique: ((drinks: Drinks) -> Unit)?) {
-            itemView.tvNome.text = drinks.nome
-            itemView.tvDescricao.text = drinks.descricao
+            itemView.tvNome.text = drinks.strDrink
 
             //começo da gambiarra
             val thumbnail = GlideApp.with(context)
@@ -46,7 +46,7 @@ class DrinkAdapter(val context: Context, val drinks: List<Drinks>)
                     .apply(RequestOptions().circleCrop())
 
             GlideApp.with(context)
-                    .load(drinks.urlToImage)
+                    .load(drinks.strDrinkThumb)
                     .thumbnail(thumbnail) //fim da gabiarra
                     .centerCrop()
                     .apply(RequestOptions().circleCrop())
