@@ -1,17 +1,19 @@
-package com.mfelipe.app_drinks
+package com.mfelipe.app_drinks.cenario_lista
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.view.menu.ShowableListMenu
 import android.support.v7.widget.LinearLayoutManager
+import android.widget.Toast
+import com.mfelipe.app_drinks.MainActivity
+import com.mfelipe.app_drinks.R
+import com.mfelipe.app_drinks.entidade.Drinks
 import kotlinx.android.synthetic.main.activity_lista_bebidas.*
 
-class ListaDrinksActivity : AppCompatActivity() {
+class ListaDrinksActivity : AppCompatActivity(), ListaContract.View {
 
-
-    val listaDrinks: MutableList<Drinks> = mutableListOf()
 
     private val mOnNavigationItemSelectedListener = OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -37,24 +39,32 @@ class ListaDrinksActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_bebidas)
 
-        //CarregaLista()
+        val presenter : ListaContract.Presenter = ListaPresenter(this)
+        presenter.carregaLista()
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
-    private fun CarregaLista() {
+    override fun showList(lista: List<Drinks>) {
 
         // obrigatorios para termos um recycler view
-        val adapter = DrinkAdapter(this, listaDrinks)
+        val adapter = DrinkAdapter(this, lista)
         val layoutManager = LinearLayoutManager(this)
 
         adapter.ConfiguraClique {
 
-            val exibirDetalhes = Intent(this, ExibeDetalhesActivity::class.java)
-            this.startActivity(exibirDetalhes)
+            //val exibirDetalhes = Intent(this, ExibeDetalhesActivity::class.java)
+            //this.startActivity(exibirDetalhes)
         }
 
         rvListaBebidas.adapter = adapter
         rvListaBebidas.layoutManager = layoutManager
     }
+
+
+    override fun showMessage(msg: String) {
+            Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+
 }

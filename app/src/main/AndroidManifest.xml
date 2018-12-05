@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mfelipe.app_drinks">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,7 +16,7 @@
 
         </activity>
         <activity
-            android:name=".ListaDrinksActivity"
+            android:name=".cenario_lista.ListaDrinksActivity"
             android:label="@string/title_activity_lista" >
 
             <intent-filter>
@@ -24,9 +27,7 @@
 
     </activity>
 
-        <activity android:name=".ExibeDetalhesActivity">
 
-        </activity>
     </application>
 
 </manifest>
