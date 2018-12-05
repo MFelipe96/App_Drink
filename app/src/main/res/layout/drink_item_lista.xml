@@ -6,11 +6,21 @@
     android:id="@+id/container">
 
     <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_star_border"
+
+        />
+    <ImageView
         android:id="@+id/ivImagem"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         />
@@ -30,6 +40,8 @@
         android:layout_marginTop="16dp"
         android:textStyle="bold"
         android:text="@string/nome"/>
+
+
 
 
     </LinearLayout>

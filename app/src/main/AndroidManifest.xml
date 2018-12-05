@@ -12,12 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
         <activity
             android:name=".cenario_lista.ListaDrinksActivity"
-            android:label="@string/title_activity_lista" >
+            android:label="@string/listaa" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +24,16 @@
 
     </activity>
 
+        <activity android:name=".cenario_splashScreen.SplashScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-    </application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+</application>
 
 </manifest>

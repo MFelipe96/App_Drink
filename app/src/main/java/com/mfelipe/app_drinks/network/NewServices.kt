@@ -10,6 +10,9 @@ interface NewServices {
         private const val API_KEY = "1"
     }
 
-    @GET("1/filter.php?&a=Alcoholic")
+    @GET("$API_KEY/filter.php?&a=Alcoholic")
     fun getDrinksAlcoolicos(): Call<DrinksList>
+
+    @GET("$API_KEY/search.php?&s=margarita")
+    fun getInstrucoesDrinks(): Call<DrinksList>
 }

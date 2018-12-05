@@ -4,10 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.view.menu.ShowableListMenu
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
-import com.mfelipe.app_drinks.MainActivity
 import com.mfelipe.app_drinks.R
 import com.mfelipe.app_drinks.entidade.Drinks
 import kotlinx.android.synthetic.main.activity_lista_bebidas.*
@@ -23,8 +21,8 @@ class ListaDrinksActivity : AppCompatActivity(), ListaContract.View {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_perfil -> {
-                val telaPerfil = Intent(this, MainActivity::class.java)
-                startActivity(telaPerfil)
+                //val telaPerfil = Intent(this, TelaPerfil::class.java)
+                //startActivity(telaPerfil)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_favoritos -> {
@@ -53,7 +51,7 @@ class ListaDrinksActivity : AppCompatActivity(), ListaContract.View {
 
         adapter.ConfiguraClique {
 
-            //val exibirDetalhes = Intent(this, ExibeDetalhesActivity::class.java)
+            //val exibirDetalhes = Intent(this, ExibirDetalhes::class.java)
             //this.startActivity(exibirDetalhes)
         }
 
