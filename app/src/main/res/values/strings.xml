@@ -4,4 +4,6 @@
     <string name="title_home">Home</string>
     <string name="titulo_favoritos">Favoritos</string>
     <string name="titulo_perfil">Perfil</string>
+    <string name="descri_o">Descrição</string>
+    <string name="nome">Nome</string>
 </resources>

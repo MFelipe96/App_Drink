@@ -1,32 +1,65 @@
 package com.mfelipe.app_drinks
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.drink_item_lista.view.*
 
-class DrinkAdapter(val drinks: List<String>)
+class DrinkAdapter(val context: Context, val drinks: List<Drinks>)
     : RecyclerView.Adapter<DrinkAdapter.ViewHolder>() {
 
+    var clique: ((drinks: Drinks) -> Unit)? = null
+
+
+    //metodo responsavel por inflar as views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.drink_item_lista, parent, false)
         return ViewHolder(view)
     }
-
+    //metodo responsavel por saber o tamanho dessa lista
     override fun getItemCount(): Int {
-        return drinks.size
+        return drinks.size //retorno o tamanho da lista
+    }
+    //coloca as informações dos drinks no viewHolder
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bindView(context, drinks[position], clique) //passando a posição a ser alterada
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindView(drinks[position])
+    fun ConfiguraClique(clique: ((drinks: Drinks) -> Unit)){
+        this.clique = clique
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindView(drinkNome: String) {
-            itemView.tvNome.text = drinkNome
+        fun bindView(context: Context, drinks: Drinks, clique: ((drinks: Drinks) -> Unit)?) {
+            itemView.tvNome.text = drinks.nome
+            itemView.tvDescricao.text = drinks.descricao
+
+            //começo da gambiarra
+            val thumbnail = GlideApp.with(context)
+                    .load(R.drawable.ic_local_bar)
+                    .apply(RequestOptions().circleCrop())
+
+            GlideApp.with(context)
+                    .load(drinks.urlToImage)
+                    .thumbnail(thumbnail) //fim da gabiarra
+                    .centerCrop()
+                    .apply(RequestOptions().circleCrop())
+                    .into(itemView.ivImagem)
+
+            if(clique != null) {
+
+                itemView.setOnClickListener() {
+
+                    clique.invoke(drinks)
+
+                }
+            }
         }
 
     }

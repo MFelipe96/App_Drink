@@ -6,22 +6,39 @@
     android:id="@+id/container">
 
     <ImageView
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:id="@+id/ivImagem"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#000"/>
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/tvNome"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:textSize="20sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="Nome"/>
+        android:layout_marginTop="8dp"
+        android:text="@string/nome"/>
+
+        <TextView
+            android:id="@+id/tvDescricao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/descri_o"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

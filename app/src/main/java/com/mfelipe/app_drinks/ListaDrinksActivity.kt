@@ -8,15 +8,15 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_lista_bebidas.*
 
-class ListaActivity : AppCompatActivity() {
+class ListaDrinksActivity : AppCompatActivity() {
 
 
-    val listaDrinks: MutableList<String> = mutableListOf("Vodka", "Corote", "Pinga", "Cerveja", "Vodka", "Corote", "Pinga", "Cerveja", "Cerveja", "Vodka", "Corote", "Pinga", "Cerveja")
+    val listaDrinks: MutableList<Drinks> = mutableListOf()
 
     private val mOnNavigationItemSelectedListener = OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                val paginaInicial = Intent(this, ListaActivity::class.java)
+                val paginaInicial = Intent(this, ListaDrinksActivity::class.java)
                 startActivity(paginaInicial)
                 return@OnNavigationItemSelectedListener true
             }
@@ -37,13 +37,24 @@ class ListaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_bebidas)
 
+        //CarregaLista()
+
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+
+    private fun CarregaLista() {
+
         // obrigatorios para termos um recycler view
-        val adapter = DrinkAdapter(listaDrinks)
+        val adapter = DrinkAdapter(this, listaDrinks)
         val layoutManager = LinearLayoutManager(this)
+
+        adapter.ConfiguraClique {
+
+            val exibirDetalhes = Intent(this, ExibeDetalhesActivity::class.java)
+            this.startActivity(exibirDetalhes)
+        }
 
         rvListaBebidas.adapter = adapter
         rvListaBebidas.layoutManager = layoutManager
-
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 }
