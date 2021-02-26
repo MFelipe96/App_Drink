@@ -1,0 +1,5 @@
+<application>
+  <component name="PinDeviceService">
+    <option name="pinnedDevices" value="[{&quot;id&quot;:&quot;192.168.0.11:5555&quot;,&quot;serialNumber&quot;:&quot;977c92c1&quot;,&quot;name&quot;:&quot;realme RMX2170&quot;,&quot;address&quot;:&quot;192.168.0.11&quot;,&quot;androidVersion&quot;:&quot;10&quot;,&quot;apiLevel&quot;:&quot;29&quot;}]" />
+  </component>
+</application>
